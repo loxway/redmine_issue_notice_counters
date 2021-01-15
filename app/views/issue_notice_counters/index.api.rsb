@@ -1,0 +1,3 @@
+api.array :issue_notice_counters, api_meta(total_count: @entity_count, offset: @offset, limit: @limit) do
+  render(@entities, { api: api })
+end

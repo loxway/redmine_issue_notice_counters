@@ -1,0 +1,8 @@
+<%= title l(:heading_issue_notice_counters_edit) %>
+
+<%= render partial: 'form', locals: { issue_notice_counters: @issue_notice_counters } %>
+
+<% ### PAGE CUSTOMS ########################################################## %>
+<% content_for :sidebar do %>
+  <%= render partial: 'issue_notice_counters/sidebar' %>
+<% end %>

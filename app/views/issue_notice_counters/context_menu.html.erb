@@ -1,0 +1,20 @@
+<ul>
+  <% if @issue_notice_counters %>
+    <li><%= context_menu_link l(:button_edit), edit_issue_notice_counters_path(@issue_notice_counters), class: 'icon icon-edit', disabled: !@can[:edit] %></li>
+  <% end %>
+  <% if @safe_attributes.include? 'status' %>
+  <li class="folder">
+    <a href="#" class="submenu icon icon-issue-status" onclick="return false;"><%= l(:field_status) %></a>
+    <ul>
+      <% IssueNoticeCounters.statuses.keys.each do |status| %>
+        <li>
+          <%= context_menu_link l("issue_notice_counters.statuses.#{status}"), bulk_update_issue_notice_counters_path(id: @issue_notice_counters_ids, issue_notice_counters: { status: status }, back_url: @back), method: :put, selected: (@selected[:status] == status), disabled: !@can[:edit], confirm: l(:text_are_you_sure) %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+  <% end %>
+  <li><%= context_menu_link l(:button_delete), issue_notice_counters_path(id: @issue_notice_counters_ids, back_url: @back), method: :delete, data: { confirm: l(:text_are_you_sure) }, class: 'icon icon-del', disabled: !@can[:delete] %></li>
+
+  <%= call_hook(:view_issue_notice_counters_context_menu_end, { issue_notice_counters: @issue_notice_counters, issue_notice_counters: @issue_notice_counters, can: @can, back: @back, project: @project }) %>
+</ul>

@@ -1,0 +1,9 @@
+<ul>
+  <% if @issue_notice_counters && !@issue_notice_counters.new_record? %>
+    <%= content_tag(:li, link_to(l(:button_edit), edit_polymorphic_path([@project, @issue_notice_counters]), title: l(:button_edit), class: 'icon icon-edit button')) %>
+  <% end %>
+  <% if @issue_notice_counters.nil? %>
+    <%= content_tag(:li, link_to(l(:button_issue_notice_counters_new), new_polymorphic_path([@project, :issue_notice_counters]), title: l(:title_issue_notice_counters_new), class: 'icon icon-add button button-positive'))
+  <% end %>
+  <%= content_tag(:li, link_to(l(:label_issue_notice_counters), polymorphic_path([@project, :issue_notice_counters], set_filter: '1'), title: l(:label_issue_notice_counters), class: 'icon icon-folder button')) %>
+</ul>

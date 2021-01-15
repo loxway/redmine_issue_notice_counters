@@ -1,0 +1,30 @@
+module RedmineIssueNoticeCounters
+  module IssuePatch
+
+    def self.included(base)
+      base.extend(ClassMethods)
+      base.send(:include, InstanceMethods)
+
+      base.class_eval do
+
+        alias_method_chain :to_s, :redmine_issue_notice_counters
+
+      end
+    end
+
+    module InstanceMethods
+
+      def to_s_with_redmine_issue_notice_counters
+        'issue'
+      end
+
+    end
+
+    module ClassMethods
+
+    end
+
+  end
+
+end
+RedmineExtensions::PatchManager.register_model_patch 'Issue', 'RedmineIssueNoticeCounters::IssuePatch'

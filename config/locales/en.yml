@@ -1,0 +1,26 @@
+---
+en:
+  label: Hello
+  label_filter_group_custom_fields: Custom fields
+  activerecord:
+    attributes:
+      issue_notice_counters:
+        name: Name
+        query: Query
+        enabled: Enabled
+        position: Position
+        field_issue_notice_counters_project: Project
+        field_issue_notice_counters_author: Author
+        field_issue_notice_counters_created_at: Created at
+        field_issue_notice_counters_updated_at: Updated at
+  easy_query:
+    name:
+      issue_notice_counters_query: Issue Notice Counters
+  heading_issue_notice_counters_new: New Issue Notice Counters
+  heading_issue_notice_counters_edit: Edit Issue Notice Counters
+  button_issue_notice_counters_new: New Issue Notice Counters
+  label_issue_notice_counters: Issue Notice Counters
+  permission_view_issue_notice_counters: View Issue Notice Counters
+  permission_manage_issue_notice_counters: Manage Issue Notice Counters
+  title_issue_notice_counters_new: Click to create new Issue Notice Counters
+  label_filter_group_issue_notice_counters_query: IssueNoticeCounters

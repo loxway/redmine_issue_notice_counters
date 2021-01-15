@@ -1,0 +1,11 @@
+local_assigns[:api].issue_notice_counters do
+  local_assigns[:api].id issue_notice_counters.id
+  local_assigns[:api].name issue_notice_counters.name
+  local_assigns[:api].query_id issue_notice_counters.query_id
+  local_assigns[:api].enabled issue_notice_counters.enabled
+  local_assigns[:api].position issue_notice_counters.position
+  local_assigns[:api].created_at issue_notice_counters.created_at
+  local_assigns[:api].updated_at issue_notice_counters.updated_at
+
+  call_hook :helper_render_api_issue_notice_counters, { api: local_assigns[:api], issue_notice_counters: issue_notice_counters }
+end

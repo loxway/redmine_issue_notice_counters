@@ -1,0 +1,47 @@
+<%= labelled_form_for([@project, @issue_notice_counters], html: { multipart: false, id: 'issue_notice_counters_form', class: 'tabular', remote: request.xhr? }) do |f| %>
+  <%= error_messages_for @issue_notice_counters %>
+
+  <div class="box">
+      <% if issue_notice_counters.safe_attribute?('project_id') && !@project %>
+      <p>
+        <%= f.label :project_id, ::IssueNoticeCounters.human_attribute_name(:project_id) %>
+        <%= f.select :project_id, Project.allowed_to(:manage_issue_notice_counters).collect{|x| [x.name, x.id]}, include_blank: true %>
+      </p>
+      <% end %>
+      <% if issue_notice_counters.safe_attribute?('name') %>
+      <p>
+        <%= f.label :name, ::IssueNoticeCounters.human_attribute_name(:name) %>
+        <%= f.text_field :name %>
+      </p>
+      <% end %>
+      <% if issue_notice_counters.safe_attribute?('query_id') %>
+      <p>
+        <%= f.label :query_id, ::IssueNoticeCounters.human_attribute_name(:query_id) %>
+        <%= f.text_field :query_id %>
+      </p>
+      <% end %>
+      <% if issue_notice_counters.safe_attribute?('enabled') %>
+      <p>
+        <%= f.label :enabled, ::IssueNoticeCounters.human_attribute_name(:enabled) %>
+        <%= f.radio_button :enabled, false %>
+      </p>
+      <% end %>
+      <% if issue_notice_counters.safe_attribute?('position') %>
+      <p>
+        <%= f.label :position, ::IssueNoticeCounters.human_attribute_name(:position) %>
+        <%= f.text_field :position %>
+      </p>
+      <% end %>
+      
+  </div>
+
+  <% if !request.xhr? %>
+    <p>
+      <% if f.object.new_record? %>
+        <%= submit_tag l(:button_create), title: l(:button_create), class: "button-positive" %>
+      <% else %>
+        <%= submit_tag l(:button_update), title: l(:button_update), class: "button-positive" %>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
